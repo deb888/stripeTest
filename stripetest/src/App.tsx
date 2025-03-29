@@ -13,7 +13,7 @@ const App: React.FC = () => {
     // Function to call the API
     const fetchPaymentIntent = async () => {
       try {
-        const response = await axios.post("http://localhost:3001/create-payment-intent", {
+        const response = await axios.post("https://stripetest-pl0s.onrender.com/create-payment-intent", {
           amount: 1000, // Amount in cents (e.g., $10.00)
           currency: "usd", // Currency
         });
