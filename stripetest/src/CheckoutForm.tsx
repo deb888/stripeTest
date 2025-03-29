@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useStripe, useElements, ExpressCheckoutElement } from "@stripe/react-stripe-js";
 import styled from "styled-components";
 
