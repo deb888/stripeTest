@@ -3,8 +3,8 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "./CheckoutForm";
 import axios from "axios"; // Optional
-
-const stripePromise = loadStripe("pk_test_lgpHO4zFKz0zPjFoNNVMjCSB");
+const apiUrl = import.meta.env.VITE_STRIPE_PUB_KEY;
+const stripePromise = loadStripe(apiUrl);
 
 const App: React.FC = () => {
   const [clientSecret, setClientSecret] = useState<string | null>(null);
