@@ -1,0 +1,6 @@
+# Ignore node_modules
+server/node_modules/
+stripetest/node_modules/
+# Vite-related files
+stripetest/.vite/
+stripetest/dist/
