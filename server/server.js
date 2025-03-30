@@ -34,7 +34,7 @@ app.post("/create-payment-intent-express", async (req, res) => {
     const paymentIntent = await stripe.paymentIntents.create({
       amount: req.body.amount, // Amount in cents
       currency: req.body.currency, // Currency
-      payment_method_types: ["card","apple_pay"],
+      payment_method_types: ["card"],
     });
 
     res.json({ clientSecret: paymentIntent.client_secret });
