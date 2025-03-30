@@ -28,7 +28,21 @@ app.post("/create-payment-intent", async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+// Create Payment Intent for Express Checkout
+app.post("/create-payment-intent-express", async (req, res) => {
+  try {
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: req.body.amount, // Amount in cents
+      currency: req.body.currency, // Currency
+      payment_method_types: ["card", "google_pay", "apple_pay"],
+    });
 
+    res.json({ clientSecret: paymentIntent.client_secret });
+  } catch (error) {
+    console.error("Error creating Express Checkout Payment Intent:", error);
+    res.status(500).json({ error: error.message });
+  }
+});
 const PORT = 3001;
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);

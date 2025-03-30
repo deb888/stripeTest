@@ -3,6 +3,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "./CheckoutForm";
 import axios from "axios"; // Optional
+import CheckoutFormBoth from "./CheckoutFormBoth";
 const apiUrl = import.meta.env.VITE_STRIPE_PUB_KEY;
 const stripePromise = loadStripe(apiUrl);
 
@@ -13,7 +14,7 @@ const App: React.FC = () => {
     // Function to call the API
     const fetchPaymentIntent = async () => {
       try {
-        const response = await axios.post("https://stripetest-pl0s.onrender.com/create-payment-intent", {
+        const response = await axios.post("https://stripetest-pl0s.onrender.com/create-payment-intent-express", {
           amount: 1000, // Amount in cents (e.g., $10.00)
           currency: "usd", // Currency
         });
@@ -34,7 +35,7 @@ const App: React.FC = () => {
       <h1>Stripe Checkout</h1>
       {clientSecret ? (
         <Elements stripe={stripePromise} options={options}>
-          <CheckoutForm />
+          <CheckoutFormBoth />
         </Elements>
       ) : (
         <p>Loading...</p>
