@@ -41,6 +41,19 @@ const CheckoutFormBoth: React.FC = () => {
           <ExpressCheckoutElement onConfirm={function (event: StripeExpressCheckoutElementConfirmEvent) {
             console.log('====================================');
             console.log(event);
+            if(stripe && elements){
+              stripe.confirmPayment({
+                elements,
+                confirmParams: {
+                  return_url: 'https://example.com',
+                },
+              })
+              .then(function(result) {
+                if (result.error) {
+                  // Inform the customer that there's an error.
+                }
+              });
+            }
             console.log('====================================');
                   } } />
           <button type="submit">Pay with Express Checkout</button>
