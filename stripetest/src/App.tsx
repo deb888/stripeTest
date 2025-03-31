@@ -14,7 +14,7 @@ const App: React.FC = () => {
     const fetchPaymentIntent = async () => {
       try {
         const response = await axios.post("https://stripetest-pl0s.onrender.com/create-payment-intent-express", {
-          amount: 1000, // Amount in cents (e.g., $10.00)
+          amount: 100, // Amount in cents (e.g., $10.00)
           currency: "usd", // Currency
         });
         setClientSecret(response.data.clientSecret);
