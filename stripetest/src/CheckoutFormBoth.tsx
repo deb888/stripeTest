@@ -49,6 +49,9 @@ const CheckoutFormBoth: React.FC = () => {
                 },
               })
               .then(function(result) {
+                console.log('====================================');
+                console.log(result,"results");
+                console.log('====================================');
                 if (result.error) {
                   // Inform the customer that there's an error.
                 }
