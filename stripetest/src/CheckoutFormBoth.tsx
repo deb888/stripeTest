@@ -45,8 +45,9 @@ const CheckoutFormBoth: React.FC = () => {
               stripe.confirmPayment({
                 elements,
                 confirmParams: {
-                  return_url: 'https://example.com',
+                  return_url: window.location.href, // No return URL
                 },
+                redirect:"if_required"
               })
               .then(function(result) {
                 console.log('====================================');
@@ -74,5 +75,5 @@ const CheckoutFormBoth: React.FC = () => {
     </div>
   );
 };
-
+// https://example.com/?payment_intent=pi_3R8rhFFU4XJK6pn72gxu20XS&payment_intent_client_secret=pi_3R8rhFFU4XJK6pn72gxu20XS_secret_f6PqWefd72fqNF16EA476ApGA&redirect_status=succeeded
 export default CheckoutFormBoth;
