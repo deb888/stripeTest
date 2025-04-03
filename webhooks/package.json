@@ -1,0 +1,15 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@paypal/checkout-server-sdk": "^1.0.3",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "env": "^0.0.2",
+    "express": "^4.21.2",
+    "stripe": "^17.7.0"
+  }
+}

@@ -1,6 +1,7 @@
 # Ignore node_modules
 server/node_modules/
 stripetest/node_modules/
+webhooks/node_modules/
 server/.env
 # Vite-related files
 stripetest/.vite/
