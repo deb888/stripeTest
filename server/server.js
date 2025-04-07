@@ -44,6 +44,21 @@ app.post("/create-payment-intent-express", async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+app.post("/create-setup-intent-express", async (req, res) => {
+  const { customerId } = req.body; // Retrieve the customer ID from the request
+
+  try {
+    const setupIntent = await stripe.setupIntents.create({
+      payment_method_types: ["card"],
+      customer: customerId, // Associate the setup intent with the provided customer ID
+    });
+
+    res.json({ clientSecret: setupIntent.client_secret });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ error: error.message });
+  }
+});
 const PORT = 3001;
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
