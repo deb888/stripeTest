@@ -9,7 +9,7 @@ const stripePromise = loadStripe(apiUrl);
 const App: React.FC = () => {
   const [clientSecret, setClientSecret] = useState<string | null>(null);
   const [clientSecretX, setClientSecretX] = useState<string | null>(null);
-  const [directDebit, setdirectDebit] = useState<boolean>(false);
+  const [directDebit, setdirectDebit] = useState<boolean>(true);
 
 
 
@@ -54,6 +54,7 @@ const App: React.FC = () => {
         amount: 0,
         recurringPaymentIntervalUnit: "month",
         recurringPaymentIntervalCount: 1,
+        label:"direct debit setup"
       },
       billingAgreement: "billing agreement",
       managementURL: "https://stripe.com",
