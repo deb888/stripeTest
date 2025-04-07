@@ -72,12 +72,12 @@ const App: React.FC = () => {
 
       {clientSecret && !directDebit && (
         <Elements stripe={stripePromise} options={options}>
-          <CheckoutFormBoth />
+          <CheckoutFormBoth directDebit={directDebit}/>
         </Elements>
       )}
       {clientSecretX && directDebit && (
         <Elements stripe={stripePromise} options={options1}>
-          <CheckoutFormBoth />
+          <CheckoutFormBoth directDebit={directDebit}/>
         </Elements>
       )}
       {

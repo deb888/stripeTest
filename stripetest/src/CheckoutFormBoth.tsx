@@ -1,8 +1,11 @@
 import React from "react";
 import { useStripe, useElements, ExpressCheckoutElement, CardNumberElement, CardExpiryElement, CardCvcElement } from "@stripe/react-stripe-js";
 import { StripeExpressCheckoutElementConfirmEvent } from "@stripe/stripe-js";
+interface props{
+  directDebit: boolean
+}
 
-const CheckoutFormBoth: React.FC = () => {
+const CheckoutFormBoth: React.FC<props> = ({directDebit}) => {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -42,7 +45,9 @@ const CheckoutFormBoth: React.FC = () => {
             console.log('====================================');
             console.log(event);
             if(stripe && elements){
-              stripe.confirmPayment({
+              if(directDebit){
+
+                stripe.confirmSetup({
                 elements,
                 confirmParams: {
                   return_url: window.location.href, // No return URL
@@ -57,6 +62,24 @@ const CheckoutFormBoth: React.FC = () => {
                   // Inform the customer that there's an error.
                 }
               });
+              }else{
+                stripe.confirmPayment({
+                  elements,
+                  confirmParams: {
+                    return_url: window.location.href, // No return URL
+                  },
+                  redirect:"if_required"
+                })
+                .then(function(result) {
+                  console.log('====================================');
+                  console.log(result,"results");
+                  console.log('====================================');
+                  if (result.error) {
+                    // Inform the customer that there's an error.
+                  }
+                });
+              }
+              
             }
             console.log('====================================');
                   } } />
