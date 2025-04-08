@@ -67,7 +67,16 @@ const App: React.FC = () => {
       <h1>Stripe Checkout</h1>
       <button onClick={() => {
         setdirectDebit(!directDebit)
-      }}>Direct Debit Flow</button>
+      }}>
+
+        {
+          directDebit && 'Go to Normal Flow'
+        }
+
+        {
+          !directDebit && 'Go to Direct debit Flow'
+        }
+      </button>
 
 
       {clientSecret && !directDebit && (
