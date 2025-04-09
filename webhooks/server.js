@@ -63,7 +63,11 @@ app.post('/paypal-webhook', async (req, res) => {
         res.sendStatus(500);
     }
 });
-
+app.post('/webhook', (req, res) => {
+    const webhookEvent = req.body;
+    console.log('Received webhook event:', webhookEvent);
+    res.sendStatus(200); // Respond with HTTP 200 to acknowledge receipt
+});
 // Start the Express server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
