@@ -50,8 +50,8 @@ const App: React.FC = () => {
     amount: 1099,
     currency: 'usd',
     appearance:{
-      theme:"flat",
-      
+      theme:"night",
+
       variables:{
         borderRadius:"20px"
       }
