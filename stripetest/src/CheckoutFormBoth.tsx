@@ -118,9 +118,10 @@ const CheckoutFormBoth: React.FC<props> = ({ directDebit }) => {
             }
             console.log('====================================');
           }} />
+                  <button className="paypal-btn">Paypal</button> 
+
       </div>
       <div>
-        <button className="paypal-btn">Paypal</button> 
       </div>
       {/* <div>
         <h2>Manual Card Entry</h2>
