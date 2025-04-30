@@ -1,11 +1,11 @@
 import React from "react";
 import { useStripe, useElements, ExpressCheckoutElement, CardNumberElement, CardExpiryElement, CardCvcElement } from "@stripe/react-stripe-js";
 import { StripeExpressCheckoutElementConfirmEvent } from "@stripe/stripe-js";
-interface props{
+interface props {
   directDebit: boolean
 }
 
-const CheckoutFormBoth: React.FC<props> = ({directDebit}) => {
+const CheckoutFormBoth: React.FC<props> = ({ directDebit }) => {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -42,51 +42,70 @@ const CheckoutFormBoth: React.FC<props> = ({directDebit}) => {
         <h2>Express Checkout</h2>
         <form onSubmit={handleSubmitExpressCheckout}>
           <ExpressCheckoutElement options={{
-            buttonType:{
-              googlePay:"buy"
+            buttonType: {
+              googlePay: "buy"
             }
-          }} onConfirm={function (event: StripeExpressCheckoutElementConfirmEvent) {
-            console.log('====================================');
-            console.log(event);
-            if(stripe && elements){
-              if(directDebit){
+          }} onCancel={(event) => {
+            if (stripe && elements) {
 
-                stripe.confirmSetup({
+              stripe.confirmPayment({
                 elements,
                 confirmParams: {
                   return_url: window.location.href, // No return URL
                 },
-                redirect:"if_required"
+                redirect: "if_required"
               })
-              .then(function(result) {
-                console.log('====================================');
-                console.log(result,"results");
-                console.log('====================================');
-                if (result.error) {
-                  // Inform the customer that there's an error.
-                }
-              });
-              }else{
-                stripe.confirmPayment({
-                  elements,
-                  confirmParams: {
-                    return_url: window.location.href, // No return URL
-                  },
-                  redirect:"if_required"
-                })
-                .then(function(result) {
+                .then(function (result) {
                   console.log('====================================');
-                  console.log(result,"results");
+                  console.log(result, "results");
                   console.log('====================================');
                   if (result.error) {
                     // Inform the customer that there's an error.
                   }
                 });
+            }
+          }} onConfirm={function (event: StripeExpressCheckoutElementConfirmEvent) {
+            console.log('====================================');
+            console.log(event);
+            if (stripe && elements) {
+              if (directDebit) {
+
+                stripe.confirmSetup({
+                  elements,
+                  confirmParams: {
+                    return_url: window.location.href, // No return URL
+                  },
+                  redirect: "if_required"
+                })
+                  .then(function (result) {
+                    console.log('====================================');
+                    console.log(result, "results");
+                    console.log('====================================');
+                    if (result.error) {
+                      // Inform the customer that there's an error.
+                    }
+                  });
+              } else {
+                stripe.confirmPayment({
+                  elements,
+                  confirmParams: {
+                    return_url: window.location.href, // No return URL
+                  },
+                  redirect: "if_required"
+                })
+                  .then(function (result) {
+                    console.log('====================================');
+                    console.log(result, "results");
+                    console.log('====================================');
+                    if (result.error) {
+                      // Inform the customer that there's an error.
+                    }
+                  });
               }
-              
+
             }
             console.log('====================================');
-                  } } />
+          }} />
           <button type="submit">Pay with Express Checkout</button>
         </form>
       </div>
