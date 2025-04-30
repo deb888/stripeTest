@@ -44,7 +44,8 @@ const CheckoutFormBoth: React.FC<props> = ({ directDebit }) => {
         <form onSubmit={handleSubmitExpressCheckout}>
           <ExpressCheckoutElement options={{
             buttonType: {
-              googlePay: "buy"
+              googlePay: "buy",
+              applePay:"buy"
             },
             buttonHeight:48,
             buttonTheme:{
