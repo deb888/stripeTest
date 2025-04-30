@@ -10,19 +10,7 @@ const CheckoutFormBoth: React.FC<props> = ({ directDebit }) => {
   const stripe = useStripe();
   const elements = useElements();
 
-  const handleSubmitExpressCheckout = async (event: React.FormEvent) => {
-    event.preventDefault();
-    if (!stripe || !elements) return;
-
-    const { error } = await stripe.confirmPayment({
-      elements,
-      confirmParams: {
-        return_url: "https://your-site.com/success",
-      },
-    });
-
-    if (error) console.error("Express Checkout Error:", error.message);
-  };
+ 
 
   const handleSubmitManualCard = async (event: React.FormEvent) => {
     event.preventDefault();
