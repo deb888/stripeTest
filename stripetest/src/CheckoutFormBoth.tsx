@@ -41,7 +41,11 @@ const CheckoutFormBoth: React.FC<props> = ({directDebit}) => {
       <div>
         <h2>Express Checkout</h2>
         <form onSubmit={handleSubmitExpressCheckout}>
-          <ExpressCheckoutElement onConfirm={function (event: StripeExpressCheckoutElementConfirmEvent) {
+          <ExpressCheckoutElement options={{
+            buttonType:{
+              googlePay:"buy"
+            }
+          }} onConfirm={function (event: StripeExpressCheckoutElementConfirmEvent) {
             console.log('====================================');
             console.log(event);
             if(stripe && elements){
