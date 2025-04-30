@@ -31,7 +31,6 @@ const CheckoutFormBoth: React.FC<props> = ({ directDebit }) => {
     <div className="container">
      
       <div>
-        <h2>Express Checkout</h2>
           <ExpressCheckoutElement options={{
             buttonType: {
               googlePay: "pay",
