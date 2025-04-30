@@ -49,6 +49,13 @@ const App: React.FC = () => {
     mode: 'payment',
     amount: 1099,
     currency: 'usd',
+    appearance:{
+      theme:"flat",
+      
+      variables:{
+        borderRadius:"20px"
+      }
+    }
     // Customizable with appearance API.
   };
   // const options1 = clientSecretX ? { clientSecret:clientSecretX,applePay: {
