@@ -1,5 +1,5 @@
 import React from "react";
-import { useStripe, useElements, ExpressCheckoutElement, CardNumberElement, CardExpiryElement, CardCvcElement } from "@stripe/react-stripe-js";
+import { useStripe, useElements, ExpressCheckoutElement } from "@stripe/react-stripe-js";
 import { StripeExpressCheckoutElementConfirmEvent } from "@stripe/stripe-js";
 import axios from "axios";
 interface props {
@@ -12,17 +12,17 @@ const CheckoutFormBoth: React.FC<props> = ({ directDebit }) => {
 
  
 
-  const handleSubmitManualCard = async (event: React.FormEvent) => {
-    event.preventDefault();
-    if (!stripe || !elements) return;
+  // const handleSubmitManualCard = async (event: React.FormEvent) => {
+  //   event.preventDefault();
+  //   if (!stripe || !elements) return;
 
-    const cardElement = elements.getElement(CardNumberElement);
-    const { error } = await stripe.confirmCardPayment("your-client-secret", {
-      payment_method: { card: cardElement! },
-    });
+  //   const cardElement = elements.getElement(CardNumberElement);
+  //   const { error } = await stripe.confirmCardPayment("your-client-secret", {
+  //     payment_method: { card: cardElement! },
+  //   });
 
-    if (error) console.error("Manual Card Error:", error.message);
-  };
+  //   if (error) console.error("Manual Card Error:", error.message);
+  // };
 
   return (
     <>
@@ -44,12 +44,7 @@ const CheckoutFormBoth: React.FC<props> = ({ directDebit }) => {
             wallets:{
               applePay:"always",
               googlePay:"always"
-            },
-            layout: {
-              maxColumns: 10, // Unlimited columns to fit all buttons in a single row
-              maxRows: 1,    // Restrict to a single row
-              overflow: 'auto', // Prevents buttons from being hidden in an overflow menu
-            },
+            }
           }} onCancel={(event) => {
             console.log('====================================');
             console.log(event);
@@ -125,7 +120,7 @@ const CheckoutFormBoth: React.FC<props> = ({ directDebit }) => {
       <div>
         <button className="paypal-btn">Paypal</button> 
       </div>
-      <div>
+      {/* <div>
         <h2>Manual Card Entry</h2>
         <form onSubmit={handleSubmitManualCard}>
           <CardNumberElement />
@@ -133,7 +128,7 @@ const CheckoutFormBoth: React.FC<props> = ({ directDebit }) => {
           <CardCvcElement />
           <button type="submit">Pay with Card</button>
         </form>
-      </div>
+      </div> */}
     </div>
     </>
   );
