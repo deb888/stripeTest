@@ -30,7 +30,7 @@ const CheckoutFormBoth: React.FC<props> = ({ directDebit }) => {
     <h1>Checkout</h1>
     <div className="container">
      
-      <div style={{ maxWidth: '1080px', margin: '0 auto' }}>
+      <div>
         <h2>Express Checkout</h2>
           <ExpressCheckoutElement options={{
             buttonType: {

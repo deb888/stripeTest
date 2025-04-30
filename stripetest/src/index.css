@@ -66,4 +66,8 @@ button:focus-visible {
   display: flex;
   flex-direction: row;
   width: 100%;
+  align-items: center;
+}
+.StripeElement{
+  width:500px
 }
