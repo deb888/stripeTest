@@ -61,7 +61,7 @@ const CheckoutFormBoth: React.FC<props> = ({ directDebit }) => {
             layout: {
               maxColumns: 0, // Unlimited columns to fit all buttons in a single row
               maxRows: 1,    // Restrict to a single row
-              overflow: 'never', // Prevents buttons from being hidden in an overflow menu
+              overflow: 'auto', // Prevents buttons from being hidden in an overflow menu
             },
           }} onCancel={(event) => {
             console.log('====================================');
