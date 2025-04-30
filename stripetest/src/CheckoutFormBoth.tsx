@@ -37,8 +37,11 @@ const CheckoutFormBoth: React.FC<props> = ({ directDebit }) => {
   };
 
   return (
-    <div>
-      <h1>Checkout</h1>
+    <>
+    
+    <h1>Checkout</h1>
+    <div className="container">
+     
       <div>
         <h2>Express Checkout</h2>
         <form onSubmit={handleSubmitExpressCheckout}>
@@ -56,8 +59,8 @@ const CheckoutFormBoth: React.FC<props> = ({ directDebit }) => {
               googlePay:"always"
             },
             layout:{
-              maxColumns:3,
-              maxRows:1,
+              maxColumns:2,
+              maxRows:4,
               overflow:"auto"
             }
           }} onCancel={(event) => {
@@ -135,6 +138,9 @@ const CheckoutFormBoth: React.FC<props> = ({ directDebit }) => {
         </form>
       </div>
       <div>
+        <button className="paypal-btn">Paypal</button> 
+      </div>
+      <div>
         <h2>Manual Card Entry</h2>
         <form onSubmit={handleSubmitManualCard}>
           <CardNumberElement />
@@ -144,6 +150,7 @@ const CheckoutFormBoth: React.FC<props> = ({ directDebit }) => {
         </form>
       </div>
     </div>
+    </>
   );
 };
 // https://example.com/?payment_intent=pi_3R8rhFFU4XJK6pn72gxu20XS&payment_intent_client_secret=pi_3R8rhFFU4XJK6pn72gxu20XS_secret_f6PqWefd72fqNF16EA476ApGA&redirect_status=succeeded
