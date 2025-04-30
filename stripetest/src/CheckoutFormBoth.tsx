@@ -42,7 +42,7 @@ const CheckoutFormBoth: React.FC<props> = ({ directDebit }) => {
     <h1>Checkout</h1>
     <div className="container">
      
-      <div style={{ maxWidth: '750px', margin: '0 auto' }}>
+      <div style={{ maxWidth: '1080px', margin: '0 auto' }}>
         <h2>Express Checkout</h2>
         <form onSubmit={handleSubmitExpressCheckout}>
           <ExpressCheckoutElement options={{
@@ -59,7 +59,7 @@ const CheckoutFormBoth: React.FC<props> = ({ directDebit }) => {
               googlePay:"always"
             },
             layout: {
-              maxColumns: 0, // Unlimited columns to fit all buttons in a single row
+              maxColumns: 10, // Unlimited columns to fit all buttons in a single row
               maxRows: 1,    // Restrict to a single row
               overflow: 'auto', // Prevents buttons from being hidden in an overflow menu
             },
