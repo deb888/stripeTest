@@ -47,7 +47,7 @@ const CheckoutFormBoth: React.FC<props> = ({ directDebit }) => {
             }
           }} onCancel={(event) => {
             console.log('====================================');
-            console.log(event);
+            console.log();
             console.log('====================================');
             if (stripe && elements) {
 

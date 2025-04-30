@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { loadStripe } from "@stripe/stripe-js";
+import { StripeElementsOptionsMode, loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import axios from "axios"; // Optional
 import CheckoutFormBoth from "./CheckoutFormBoth";
@@ -27,7 +27,7 @@ const App: React.FC = () => {
       }
     };
 
-    fetchPaymentIntent();
+    // fetchPaymentIntent();
   }, []);
   useEffect(() => {
     // Function to call the API
@@ -42,11 +42,17 @@ const App: React.FC = () => {
       }
     };
 
-    fetchPaymentIntentX();
+    // fetchPaymentIntentX();
   }, []);
 
   // Options for the Elements provider
   const options = clientSecret ? { clientSecret } : undefined;
+  const optionsxx:StripeElementsOptionsMode = {
+    mode: 'payment',
+    amount: 1099,
+    currency: 'usd',
+    // Customizable with appearance API.
+  };
   const options1 = clientSecretX ? { clientSecret:clientSecretX,applePay: {
     recurringPaymentRequest: {
       paymentDescription: "Direct Debit Subscription",
@@ -80,7 +86,7 @@ const App: React.FC = () => {
 
 
       {clientSecret && !directDebit && (
-        <Elements stripe={stripePromise} options={options}>
+        <Elements stripe={stripePromise} options={optionsxx}>
           <CheckoutFormBoth directDebit={directDebit}/>
         </Elements>
       )}
