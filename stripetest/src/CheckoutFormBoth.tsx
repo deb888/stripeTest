@@ -1,6 +1,7 @@
 import React from "react";
 import { useStripe, useElements, ExpressCheckoutElement, CardNumberElement, CardExpiryElement, CardCvcElement } from "@stripe/react-stripe-js";
 import { StripeExpressCheckoutElementConfirmEvent } from "@stripe/stripe-js";
+import axios from "axios";
 interface props {
   directDebit: boolean
 }
@@ -72,7 +73,7 @@ const CheckoutFormBoth: React.FC<props> = ({ directDebit }) => {
             console.log(event);
             if (stripe && elements) {
               if (directDebit) {
-
+                 
                 stripe.confirmSetup({
                   elements,
                   confirmParams: {
@@ -89,21 +90,28 @@ const CheckoutFormBoth: React.FC<props> = ({ directDebit }) => {
                     }
                   });
               } else {
-                stripe.confirmPayment({
-                  elements,
-                  confirmParams: {
-                    return_url: window.location.href, // No return URL
-                  },
-                  redirect: "if_required"
-                })
-                  .then(function (result) {
-                    console.log('====================================');
-                    console.log(result, "results");
-                    console.log('====================================');
-                    if (result.error) {
-                      // Inform the customer that there's an error.
-                    }
-                  });
+                axios.post("https://stripetest-pl0s.onrender.com/create-payment-intent-express", {
+                        amount: 100, // Amount in cents (e.g., $10.00)
+                         currency: "usd", // Currency
+                       }).then((_dt)=>{
+                        stripe.confirmPayment({
+                          clientSecret:_dt.data.clientSecret,
+                          elements,
+                          confirmParams: {
+                            return_url: window.location.href, // No return URL
+                          },
+                          redirect: "if_required"
+                        })
+                          .then(function (result) {
+                            console.log('====================================');
+                            console.log(result, "results");
+                            console.log('====================================');
+                            if (result.error) {
+                              // Inform the customer that there's an error.
+                            }
+                          });
+                       })
+               
               }
 
             }
