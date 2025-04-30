@@ -34,16 +34,18 @@ const CheckoutFormBoth: React.FC<props> = ({ directDebit }) => {
         <h2>Express Checkout</h2>
           <ExpressCheckoutElement options={{
             buttonType: {
-              googlePay: "buy",
+              googlePay: "pay",
               applePay:"buy"
             },
-            buttonHeight:48,
             buttonTheme:{
               applePay:"white-outline"
             },
             wallets:{
               applePay:"always",
               googlePay:"always"
+            },
+            layout:{
+              overflow:"never"
             }
           }} onCancel={(event) => {
             console.log('====================================');
