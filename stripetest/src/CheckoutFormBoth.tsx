@@ -56,9 +56,9 @@ const CheckoutFormBoth: React.FC<props> = ({ directDebit }) => {
               googlePay:"always"
             },
             layout:{
-              maxColumns:2,
-              maxRows:0,
-              overflow:"never"
+              maxColumns:3,
+              maxRows:1,
+              overflow:"auto"
             }
           }} onCancel={(event) => {
             console.log('====================================');
