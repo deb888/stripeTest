@@ -50,6 +50,10 @@ const CheckoutFormBoth: React.FC<props> = ({ directDebit }) => {
             buttonHeight:48,
             buttonTheme:{
               applePay:"white-outline"
+            },
+            wallets:{
+              applePay:"always",
+              googlePay:"always"
             }
           }} onCancel={(event) => {
             console.log('====================================');
