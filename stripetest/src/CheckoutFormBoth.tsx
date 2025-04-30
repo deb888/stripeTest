@@ -46,7 +46,7 @@ const CheckoutFormBoth: React.FC<props> = ({ directDebit }) => {
             buttonType: {
               googlePay: "buy"
             },
-            buttonHeight:5,
+            buttonHeight:48,
             buttonTheme:{
               applePay:"white-outline"
             }
