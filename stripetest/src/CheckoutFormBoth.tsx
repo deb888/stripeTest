@@ -57,7 +57,7 @@ const CheckoutFormBoth: React.FC<props> = ({ directDebit }) => {
             },
             layout:{
               maxColumns:2,
-              maxRows:1,
+              maxRows:0,
               overflow:"never"
             }
           }} onCancel={(event) => {
