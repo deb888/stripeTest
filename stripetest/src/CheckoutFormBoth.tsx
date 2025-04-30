@@ -45,7 +45,7 @@ const CheckoutFormBoth: React.FC<props> = ({ directDebit }) => {
             buttonType: {
               googlePay: "buy"
             }
-          }} onCancel={(event) => {
+          }} onCancel={() => {
             if (stripe && elements) {
 
               stripe.confirmPayment({
