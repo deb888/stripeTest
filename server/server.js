@@ -34,8 +34,8 @@ app.post("/create-payment-intent-express", async (req, res) => {
     const paymentIntent = await stripe.paymentIntents.create({
       amount: req.body.amount, // Amount in cents
       currency: req.body.currency, // Currency
-      // payment_method_types: ["card"],
-      automatic_payment_methods: { enabled: true },
+      payment_method_types: ["card"],
+      // automatic_payment_methods: { enabled: true },
     });
 
     res.json({ clientSecret: paymentIntent.client_secret });
